@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IfeakachukwuOsakwe</string>
+    <string name="screen_one_title_bar">My Filters</string>
+    <string name="screen_two_title_bar">Car Owners</string>
+    <string name="placeholder">Random text</string>
+    <string name="errorMessage">Error reading from Api</string>
 </resources>
