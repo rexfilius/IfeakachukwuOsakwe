@@ -19,31 +19,28 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private TextView screenOneTitle;
-    private TextView screenOneTextStartYear;
-    private TextView screenOneTextEndYear;
-    private TextView screenOneTextGender;
-    private TextView screenOneTextCountries;
-    private TextView screenOneTextColors;
 
-    private FilteredListFromApiService filteredListFromApiService;
+    private List<ListFromApi> mListFromApi;
+    private ListFromApiService filteredListFromApiService;
     private final String BASE_URL =
             "https://run.mocky.io/v3/b4cdeed3-327b-4591-9b06-aaf043e65497/";
+
+    ListFromApiAdapter mListFromApiAdapter;
+    RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         screenOneTitle = findViewById(R.id.screenOneTitle);
-        screenOneTextStartYear = findViewById(R.id.screenOneTextStartYear);
-        screenOneTextEndYear = findViewById(R.id.screenOneTextEndYear);
-        screenOneTextGender = findViewById(R.id.screenOneTextGender);
-        screenOneTextCountries = findViewById(R.id.screenOneTextCountries);
-        screenOneTextColors = findViewById(R.id.screenOneTextColors);
+
+        mRecyclerView = findViewById(R.id.list_from_api_recyclerview);
+        mListFromApiAdapter = new ListFromApiAdapter(this, mListFromApi);
+        mRecyclerView.setAdapter(mListFromApiAdapter);
 
         createRetrofitInstance();
-
         getFilteredListFromApi();
+
     }
 
     private void createRetrofitInstance() {
@@ -52,46 +49,47 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        filteredListFromApiService = retrofit.create(FilteredListFromApiService.class);
+        filteredListFromApiService = retrofit.create(ListFromApiService.class);
     }
 
     private void getFilteredListFromApi() {
-        Call<List<FilteredListFromApi>> call =
+        Call<List<ListFromApi>> call =
                 filteredListFromApiService.getFilterFromApi(BASE_URL);
 
-        call.enqueue(new Callback<List<FilteredListFromApi>>() {
+        call.enqueue(new Callback<List<ListFromApi>>() {
             @Override
-            public void onResponse(Call<List<FilteredListFromApi>> call,
-                                   Response<List<FilteredListFromApi>> response) {
+            public void onResponse(Call<List<ListFromApi>> call,
+                                   Response<List<ListFromApi>> response) {
 
                 if (!response.isSuccessful()) {
                     screenOneTitle.setText(R.string.errorMessage);
                     return;
                 }
-                displayFilteredListFromApi(response);
+
+                mListFromApi = response.body();
+                Log.d(TAG, "onResponse: " + response.body());
             }
 
             @Override
-            public void onFailure(Call<List<FilteredListFromApi>> call, Throwable t) {
+            public void onFailure(Call<List<ListFromApi>> call, Throwable t) {
                 screenOneTitle.setText(R.string.errorMessage);
             }
         });
     }
 
-    private void displayFilteredListFromApi(Response<List<FilteredListFromApi>> response) {
-        List<FilteredListFromApi> filteredListFromApi = response.body();
+    // removed code from onResponse
+    //List<ListFromApi> filteredListFromApi = response.body();
+    //                if (filteredListFromApi != null) {
+//
+//                    for (ListFromApi data : filteredListFromApi) {
+//                        ListFromApiAdapter.ViewHolder.displayFilteredListFromApi(response);
+//                    }
+//                }
 
-        if (filteredListFromApi != null) {
-
-            for (FilteredListFromApi data : filteredListFromApi) {
-                screenOneTextStartYear.setText(String.valueOf(data.getStartYear()));
-                screenOneTextEndYear.setText(String.valueOf(data.getEndYear()));
-                screenOneTextGender.setText(data.getGender());
-                screenOneTextCountries.setText(data.getCountries().toString());
-                screenOneTextColors.setText(data.getColors().toString());
-            }
-        }
-
-    }
+//                if (mListFromApi != null) {
+//                    for (ListFromApi data : mListFromApi) {
+//
+//                    }
+//                }
 
 }
