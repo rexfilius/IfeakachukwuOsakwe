@@ -1,4 +1,4 @@
-package com.example.ifeakachukwuosakwe;
+package com.example.ifeakachukwuosakwe.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -19,6 +19,15 @@ public class ListFromApi {
     private ArrayList<String> countries;
 
     private ArrayList<String> colors;
+
+    public ListFromApi(int startYear, int endYear, String gender,
+                       ArrayList<String> countries, ArrayList<String> colors) {
+        this.startYear = startYear;
+        this.endYear = endYear;
+        this.gender = gender;
+        this.countries = countries;
+        this.colors = colors;
+    }
 
     public int getId() {
         return id;

@@ -1,4 +1,4 @@
-package com.example.ifeakachukwuosakwe;
+package com.example.ifeakachukwuosakwe.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,43 +9,44 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import com.example.ifeakachukwuosakwe.model.ListFromApi;
+import com.example.ifeakachukwuosakwe.R;
 
-import retrofit2.Response;
+import java.util.List;
 
 public class ListFromApiAdapter extends RecyclerView.Adapter<ListFromApiAdapter.ViewHolder> {
 
     private List<ListFromApi> mListFromApi;
-    private LayoutInflater mLayoutInflater;
+    private Context mContext;
 
-    ListFromApiAdapter(Context context, List<ListFromApi> data) {
-        this.mLayoutInflater = LayoutInflater.from(context);
-        this.mListFromApi = data;
+    public ListFromApiAdapter(List<ListFromApi> lists, Context context) {
+        this.mListFromApi = lists;
+        this.mContext = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mLayoutInflater.inflate(
-                R.layout.list_from_api_item, parent, false);
+
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_from_api_item, parent, false);
         return new ViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ListFromApi listFromApi = mListFromApi.get(position);
-        holder.screenOneTextStartYear.setText(listFromApi.getStartYear());
-        holder.screenOneTextEndYear.setText(listFromApi.getEndYear());
+        holder.screenOneTextStartYear.setText(String.valueOf(listFromApi.getStartYear()));
+        holder.screenOneTextEndYear.setText(String.valueOf(listFromApi.getEndYear()));
         holder.screenOneTextGender.setText(listFromApi.getGender());
         holder.screenOneTextCountries.setText(listFromApi.getCountries().toString());
         holder.screenOneTextColors.setText(listFromApi.getColors().toString());
-        //holder.displayFilteredListFromApi();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
-        //return mListFromApi.size();
+        return mListFromApi.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -65,21 +66,6 @@ public class ListFromApiAdapter extends RecyclerView.Adapter<ListFromApiAdapter.
             screenOneTextColors = itemView.findViewById(R.id.screenOneTextColors);
         }
 
-        public void displayFilteredListFromApi(Response<List<ListFromApi>> response) {
-            List<ListFromApi> filteredListFromApi = response.body();
-
-            if (filteredListFromApi != null) {
-
-                for (ListFromApi data : filteredListFromApi) {
-                    screenOneTextStartYear.setText(String.valueOf(data.getStartYear()));
-                    screenOneTextEndYear.setText(String.valueOf(data.getEndYear()));
-                    screenOneTextGender.setText(data.getGender());
-                    screenOneTextCountries.setText(data.getCountries().toString());
-                    screenOneTextColors.setText(data.getColors().toString());
-                }
-            }
-
-        }
-
     }
+
 }
