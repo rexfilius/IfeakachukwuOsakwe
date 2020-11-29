@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">IfeakachukwuOsakwe</string>
+    <string name="screen_one_title_bar">My Filters</string>
+    <string name="screen_two_title_bar">Car Owners</string>
+    <string name="placeholder">Random text</string>
+    <string name="errorMessage">Error reading from Api</string>
+
+    <string name="text_start_year">Start Date: </string>
+    <string name="text_end_year">End Date : </string>
+    <string name="text_gender">Gender : </string>
+    <string name="text_countries">Countries : </string>
+    <string name="text_color">Colors : </string>
 </resources>

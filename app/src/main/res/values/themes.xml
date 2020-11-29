@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.IfeakachukwuOsakwe" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+    <!-- Base application theme. changed from DarkActionBar to NoActionBar-->
+    <style name="Theme.IfeakachukwuOsakwe" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,4 +14,23 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="recyclerViewItemStyle1">
+        <item name="fontFamily">@font/aclonica</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+    </style>
+
+    <style name="recyclerViewItemStyle2">
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/white</item>
+        <item name="fontFamily">@font/aclonica</item>
+    </style>
+
 </resources>
