@@ -1,38 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/screenOneTextStartYear"
-        android:layout_width="match_parent"
+        style="@style/recyclerViewItemStyle1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_start_year"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         tools:text="@string/placeholder" />
 
     <TextView
         android:id="@+id/screenOneTextEndYear"
-        android:layout_width="match_parent"
+        style="@style/recyclerViewItemStyle1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_end_year"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         tools:text="@string/placeholder" />
 
     <TextView
         android:id="@+id/screenOneTextGender"
-        android:layout_width="match_parent"
+        style="@style/recyclerViewItemStyle1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_gender"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         tools:text="@string/placeholder" />
 
     <TextView
         android:id="@+id/screenOneTextCountries"
-        android:layout_width="match_parent"
+        style="@style/recyclerViewItemStyle1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_countries"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         tools:text="@string/placeholder" />
 
     <TextView
         android:id="@+id/screenOneTextColors"
-        android:layout_width="match_parent"
+        style="@style/recyclerViewItemStyle1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView_color"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
         tools:text="@string/placeholder" />
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_start_year"
+        style="@style/recyclerViewItemStyle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_start_year"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_end_year"
+        style="@style/recyclerViewItemStyle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_end_year"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_start_year" />
+
+    <TextView
+        android:id="@+id/textView_gender"
+        style="@style/recyclerViewItemStyle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_end_year" />
+
+    <TextView
+        android:id="@+id/textView_countries"
+        style="@style/recyclerViewItemStyle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_countries"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_gender" />
+
+    <TextView
+        android:id="@+id/textView_color"
+        style="@style/recyclerViewItemStyle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_countries" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="120dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

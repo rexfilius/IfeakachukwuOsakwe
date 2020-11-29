@@ -38,6 +38,12 @@ public class ListFromApiAdapter extends RecyclerView.Adapter<ListFromApiAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ListFromApi listFromApi = mListFromApi.get(position);
         holder.screenOneTextStartYear.setText(String.valueOf(listFromApi.getStartYear()));
+//        holder.screenOneTextStartYear.setText(
+//                String.format(R.string.text_start_year, listFromApi.getStartYear())
+//        );
+//        String greetingText =
+//                String.format(getResources().getString(R.string.my_name), "Ruben", 26);
+
         holder.screenOneTextEndYear.setText(String.valueOf(listFromApi.getEndYear()));
         holder.screenOneTextGender.setText(listFromApi.getGender());
         holder.screenOneTextCountries.setText(listFromApi.getCountries().toString());
